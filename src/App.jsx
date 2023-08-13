@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Canvas } from '@react-three/fiber'
+import { Sky} from '@react-three/drei'
+import { Physics } from '@react-three/cannon'
+import { Ground } from './components/Ground'
+import { FPV } from './components/FPV'
+
+import WebGL from 'three/addons/capabilities/WebGL.js';
+import { Player } from './components/Player'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  if ( WebGL.isWebGLAvailable() ) {
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <Canvas>
+        <Sky sunPosition={[100, 200, 100]} />
+        <ambientLight intensity={0.6} />
+        <FPV />
+        <Physics>
+          <Player />
+          <Ground />
+        </Physics>
+      </Canvas>
+  ) }
+  else {
+    const warning = WebGL.getWebGLErrorMessage();
+    document.getElementById( 'container' ).appendChild( warning );
+  
+  }
 }
 
 export default App
