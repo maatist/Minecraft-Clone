@@ -3,9 +3,10 @@ import { extend } from "@react-three/fiber";
 import { PlaneGeometry, MeshStandardMaterial } from "three";
 extend({ MeshStandardMaterial, PlaneGeometry });
 
-import { grassTexture } from "../images/textures";
+import { floorTexture } from "../images/textures";
+import { useStore } from "../hooks/useStore";
 
-grassTexture.repeat.set(100, 100);
+
 
 
 export function Ground() {
@@ -15,11 +16,21 @@ export function Ground() {
         scale: [1, 1, 1],
     }));
 
+    const [ addCube ] = useStore(state => [state.addCube])
+
+    const handleClickGround = event => {
+        event.stopPropagation();
+        const [x, y, z] = Object.values(event.point).map(n => Math.ceil(n));
+        addCube(x, y, z);
+    }
     
+    floorTexture.repeat.set(50, 50);
     return (
-        <mesh ref={ref} re>
-            <planeGeometry attach='geometry' args={[100, 100]} />
-            <meshStandardMaterial attach='material' map={grassTexture}/>
+        <mesh 
+            onClick={handleClickGround}
+            ref={ref}>
+            <planeGeometry attach='geometry' args={[50, 50]} />
+            <meshStandardMaterial attach='material' map={floorTexture}/>
         </mesh>
     );
     }

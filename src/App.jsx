@@ -7,20 +7,28 @@ import { FPV } from './components/FPV'
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { Player } from './components/Player'
 
+import './index.css'
+import { Cubes } from './components/Cubes'
+
 function App() {
 
   if ( WebGL.isWebGLAvailable() ) {
 
   return (
+    <>
+    
       <Canvas>
         <Sky sunPosition={[100, 200, 100]} />
         <ambientLight intensity={0.6} />
         <FPV />
         <Physics>
+          <Cubes />
           <Player />
           <Ground />
         </Physics>
       </Canvas>
+      <div className='pointer'>+</div>
+    </>
   ) }
   else {
     const warning = WebGL.getWebGLErrorMessage();
