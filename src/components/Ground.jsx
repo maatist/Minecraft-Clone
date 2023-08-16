@@ -27,7 +27,11 @@ export function Ground() {
     floorTexture.repeat.set(50, 50);
     return (
         <mesh 
-            onClick={handleClickGround}
+            onClick={(e) => {
+                if (e.button === 0) {
+                    handleClickGround(e);
+                }
+            }}
             ref={ref}>
             <planeGeometry attach='geometry' args={[50, 50]} />
             <meshStandardMaterial attach='material' map={floorTexture}/>
