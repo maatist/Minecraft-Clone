@@ -9,6 +9,7 @@ import { Player } from './components/Player'
 
 import './index.css'
 import { Cubes } from './components/Cubes'
+import { TextureSelector } from './components/TextureSelect'
 
 function App() {
 
@@ -16,17 +17,19 @@ function App() {
 
   return (
     <>
-    
+      
       <Canvas>
         <Sky sunPosition={[100, 200, 100]} />
         <ambientLight intensity={0.6} />
         <FPV />
+        
         <Physics>
           <Cubes />
           <Player />
           <Ground />
         </Physics>
       </Canvas>
+      < TextureSelector />
       <div className='pointer'>+</div>
     </>
   ) }

@@ -5,7 +5,7 @@ import { Vector3 } from "three"
 import { useKeyboard } from "../hooks/useKeyboard"
 
 const CHARACTER_SPEED = 3
-const CHARACTER_JUMP_FORCE = 3
+const CHARACTER_JUMP_FORCE = 4
 
 
 export const Player = () => {

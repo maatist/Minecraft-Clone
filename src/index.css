@@ -28,3 +28,19 @@ body {
     opacity: 0.5;
 
 }
+
+.texture-selector {
+    padding: 2px;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 16px;
+}
+
+.texture-selector img {
+    width: 80px;
+    z-index: 100;
+    image-rendering: pixelated;
+}
