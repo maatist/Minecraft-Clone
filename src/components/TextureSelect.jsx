@@ -10,19 +10,19 @@ export const TextureSelector = () => {
 
     const {
         dirt,
-        grass,
         glass,
+        grass,
+        log,
         wood,
-        log
     } = useKeyboard();
 
     useEffect(() => {
         const options = {
             dirt,
-            grass,
             glass,
+            grass,
+            log,
             wood,
-            log
         };
         const selectedTexture = Object
             .entries(options)
@@ -33,7 +33,11 @@ export const TextureSelector = () => {
                 setTexture(textureName);
             }
             console.log(selectedTexture);
-        }, [dirt, grass, glass, wood, log]);
+        }, [dirt,
+            glass,
+            grass,
+            log,
+            wood]);
 
 
     if (!visible) return null;
