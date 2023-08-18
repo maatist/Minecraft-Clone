@@ -32,7 +32,7 @@ body {
 .texture-selector {
     padding: 2px;
     position: absolute;
-    bottom: 5%;
+    bottom: 1%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -40,7 +40,32 @@ body {
 }
 
 .texture-selector img {
-    width: 80px;
+    width: 70px;
     z-index: 100;
     image-rendering: pixelated;
+    border: 3px solid black;
+}
+
+.texture-selector img.selected {
+    border-color: white;
+}
+
+.menu {
+    top: 10px;
+    left: 10px;
+    position: absolute;
+}
+
+button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 18px;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    text-transform: uppercase;
+    transition: all 0.5s;
 }

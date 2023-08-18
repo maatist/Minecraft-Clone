@@ -10,6 +10,7 @@ import { Player } from './components/Player'
 import './index.css'
 import { Cubes } from './components/Cubes'
 import { TextureSelector } from './components/TextureSelect'
+import { Menu } from './components/Menu'
 
 function App() {
 
@@ -29,8 +30,9 @@ function App() {
           <Ground />
         </Physics>
       </Canvas>
-      < TextureSelector />
       <div className='pointer'>+</div>
+      < TextureSelector />
+      <Menu />
     </>
   ) }
   else {

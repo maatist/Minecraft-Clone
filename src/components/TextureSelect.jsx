@@ -50,6 +50,7 @@ export const TextureSelector = () => {
                 Object.entries(images).map(([textureName, textureImage]) => {
                     return (
                         <img
+                            className={texture === textureName.replace('Img', '') ? 'selected' : ''}
                             key={textureName}
                             src={textureImage}
                             alt={textureName}
